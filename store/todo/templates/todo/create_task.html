@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style.css">
+  <title>Создать задачу</title>
+</head>
+<body class="body">
+
+  <header class="header">
+    <div class="header_content">
+      <h1>VladKish</h1>
+      <div class="header-block">
+        <a href="index.html" class="back-btn">⬅ Назад</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="center_task">
+    <div class="text">
+      <h1>Создание задачи</h1>
+
+      <div class="task-form">
+        <form action="#" method="post">
+          <label>Название задачи</label>
+          <input type="text" name="title" required>
+
+          <label>Описание</label>
+          <textarea name="description" rows="4" required></textarea>
+
+          <label>Категория</label>
+          <select name="category" required>
+            <option value="work">Работа</option>
+            <option value="hobby">Хобби</option>
+            <option value="home">Дом</option>
+            <option value="other">Другое</option>
+          </select>
+
+          <label>Срок выполнения</label>
+          <input type="date" name="deadline">
+
+          <button type="submit">Создать задачу</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

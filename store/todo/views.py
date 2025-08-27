@@ -1,3 +1,7 @@
 from django.shortcuts import render
 
-# Create your views here.
+def index(request):
+    return render(request, 'todo/task.html')
+
+def form_task(request):
+    return render(request, 'todo/create_task.html')
