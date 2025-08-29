@@ -6,23 +6,24 @@
       <h1>Создание задачи</h1>
 
       <div class="task-form">
-        <form action="#" method="post">
-          <label>Название задачи</label>
-          <input type="text" name="title" required>
+        <form action="{% url "todo:create_task" %}" method="post" name="task">
+          {% csrf_token %}
+          <input type="hidden" name="form_type" value="task">
 
-          <label>Описание</label>
-          <textarea name="description" rows="4" required></textarea>
+          <label for="{{ task_form.title.id_for_label }}">Название задачи</label>
+          {{ task_form.title }}
 
-          <label>Категория</label>
-          <select name="category" required>
+          <label for="{{ task_form.description.id_for_label }}">Напиши описание</label>
+          {{ task_form.description }}
+
+          <label for="{{ task_form.category.id_for_label }}">Выберете категорию</label>
+          {{ task_form.category }}
+          {% comment %} <select name="category" required>
             <option value="work">Работа</option>
             <option value="hobby">Хобби</option>
             <option value="home">Дом</option>
             <option value="other">Другое</option>
-          </select>
-
-          <label>Срок выполнения</label>
-          <input type="date" name="deadline">
+          </select> {% endcomment %}
 
           <button type="submit">Создать задачу</button>
         </form>
@@ -33,7 +34,10 @@
       <h1>Создание категории</h1>
 
       <div class="task-form">
-        <form action="#" method="post">
+        <form action="{% url "todo:create_task" %}" method="post" name="category">
+          {% csrf_token %}
+          <input type="hidden" name="form_type" value="task">
+
           <label>Название категории</label>
           <input type="text" name="title" required>
 
