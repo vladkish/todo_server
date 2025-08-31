@@ -36,10 +36,10 @@
       <div class="task-form">
         <form action="{% url "todo:create_task" %}" method="post" name="category">
           {% csrf_token %}
-          <input type="hidden" name="form_type" value="task">
+          <input type="hidden" name="form_type" value="category">
 
-          <label>Название категории</label>
-          <input type="text" name="title" required>
+          <label for="{{ category_form.title.id_for_label }}">Название категории</label>
+          {{ category_form.title }}
 
           <button type="submit">Создать задачу</button>
         </form>

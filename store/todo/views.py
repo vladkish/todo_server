@@ -10,8 +10,7 @@ def form_task(request):
     
     if request.method == 'POST':
         if 'task' in request.POST:
-            task_form = FormCreateTask(request.POST)
-            category_form = FormCreateCategory()
+            task_form = FormCreateTask(data=request.POST)
             if task_form.is_valid():
                 task = task_form.save(commit=False)
                 task.user = request.user
@@ -19,8 +18,7 @@ def form_task(request):
                 return redirect(request.META['HTTP_REFERER'])
 
         else:
-            category_form = FormCreateCategory(request.POST)
-            task_form = FormCreateTask()
+            category_form = FormCreateCategory(data=request.POST)
             if category_form.is_valid():
                 task = category_form.save(commit=False)
                 task.user = request.user
