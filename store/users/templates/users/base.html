@@ -1,0 +1,28 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{% static "css/style.css" %}">
+  <link rel="stylesheet" href="{% static "css/auth.css" %}">
+  <title>Sign Up</title>
+</head>
+<body class="body">
+
+  <header class="header">
+    <div class="header_content">
+      <h1>VladKish</h1>
+      <div class="header-block">
+        <a href="{% url "index" %}" class="back-btn">⬅ Назад</a>
+      </div>
+    </div>
+  </header>
+
+  {% block content %}
+  
+  {% endblock content %}
+
+</body>
+</html>
