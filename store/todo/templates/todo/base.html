@@ -18,9 +18,9 @@
         <div class="header_content">
             <h1>VladKish</h1>
             <div class="header-block">
-                <a href="" class="login">Login</a>
+                <a href="{% url "users:login" %}" class="login">Login</a>
                 <span>/</span>
-                <a href="" class="sign">Sign</a>
+                <a href="{% url "users:sign" %}" class="sign">Sign</a>
             </div>
             
             <!-- user authe. -->
@@ -31,7 +31,7 @@
     </header>
 
     {% block content %} 
-
+        
     {% endblock %}
 </body>
 </html>

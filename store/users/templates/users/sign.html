@@ -10,14 +10,18 @@
         <div class="auth-form">
           <h2>Создать аккаунт</h2>
           <form action="#" method="post">
-            <label>Имя пользователя</label>
-            <input type="text" name="username" required>
+            {% csrf_token %}
+            <label for="{{ form.username.id_for_label }}">Имя пользователя</label>
+            {{ form.username }}
             
-            <label>Email</label>
-            <input type="email" name="email" required>
+            <label for="{{ form.email.id_for_label }}">Email</label>
+            {{ form.email }}
             
-            <label>Пароль</label>
-            <input type="password" name="password" required>
+            <label for="{{ form.password1.id_for_label }}">Пароль</label>
+            {{ form.password1 }}
+
+            <label for="{{ form.password2.id_for_label }}">Пароль</label>
+            {{ form.password2 }}
             
             <button type="submit">Зарегистрироваться</button>
           </form>
