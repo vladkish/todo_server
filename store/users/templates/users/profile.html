@@ -1,4 +1,5 @@
 {% extends "users/base.html" %}
+{% load static %}
 
 {% block content %}
   <div class="center_task">
@@ -6,19 +7,24 @@
       <h1>Профиль пользователя</h1>
       <div class="profile-card">
         <div class="profile-avatar">
-          <img src="https://via.placeholder.com/120" alt="Avatar">
+          <img src="
+          {% if user.image %}{{ user.image.url }}{% else %}{% static "img/default.jpg" %}{% endif %}" alt="Avatar">
         </div>
         <div class="profile-info">
           <h2>Влад Кишковар</h2>
-          <p><strong>Email:</strong> example@mail.com</p>
-          <p><strong>Роль:</strong> Пользователь</p>
-          <p><strong>Дата регистрации:</strong> 25 янв 2025</p>
+          <p><strong>Email:</strong>{{ user.email }}</p>
+          {% if user.is_staff or user.is_superuser%}
+            <p><strong>Роль:</strong> Админ</p>
+          {% else %}
+            <p><strong>Роль:</strong> Пользователь</p>
+          {% endif %}
+          <p><strong>Дата регистрации:</strong>{{ user.date_joined }}</p>
         </div>
       </div>
 
       <div class="profile-actions">
         <button class="btn">Редактировать профиль</button>
-        <button class="btn logout">Выйти</button>
+        <a class="btn logout">Выйти</a>
       </div>
     </div>
     <div class="public-tasks">
