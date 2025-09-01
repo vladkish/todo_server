@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .forms import FormCreateTask, FormCreateCategory
+from .forms import FormCategory, FormTask
 from django.contrib.auth.decorators import login_required
 
 def index(request):
@@ -9,24 +9,25 @@ def index(request):
 def form_task(request):
     
     if request.method == 'POST':
-        if 'task' in request.POST:
-            task_form = FormCreateTask(data=request.POST)
+        if request.POST.get("form_type") == 'task':
+            task_form = FormTask(data=request.POST)
+            category_form = FormCategory()
             if task_form.is_valid():
                 task = task_form.save(commit=False)
                 task.user = request.user
                 task.save()
                 return redirect(request.META['HTTP_REFERER'])
-
         else:
-            category_form = FormCreateCategory(data=request.POST)
+            category_form = FormCategory(data=request.POST)
+            task_form = FormTask()
             if category_form.is_valid():
                 task = category_form.save(commit=False)
                 task.user = request.user
                 task.save()
                 return redirect(request.META['HTTP_REFERER'])
     else:
-        task_form = FormCreateTask()
-        category_form = FormCreateCategory()
+        task_form = FormTask()
+        category_form = FormCategory()
         
     context = {
         'task_form' : task_form,

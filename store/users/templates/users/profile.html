@@ -27,24 +27,22 @@
         <a class="btn logout" href="{% url "users:logout" %}">Выйти</a>
       </div>
     </div>
+
     <div class="public-tasks">
-        <h2>Публичные задачи</h2>
+        <h2>3адачи</h2>
+        {% comment %} <h2>Публичные задачи</h2> {% endcomment %}
         <div class="tasks-grid">
-            <div class="task-card">
-            <h3>Сделать дизайн сайта</h3>
-            <p>Создать макет в Figma</p>
-            <span>25 янв 2025</span>
-            </div>
-            <div class="task-card">
-            <h3>Изучить Django ORM</h3>
-            <p>Пройти раздел по моделям и миграциям</p>
-            <span>26 янв 2025</span>
-            </div>
-            <div class="task-card">
-            <h3>Настроить сервер</h3>
-            <p>Установить и сконфигурировать Nginx</p>
-            <span>28 янв 2025</span>
-            </div>
+        {% if posts %}
+          {% for post in posts %}
+              <div class="task-card">
+              <h3>{{ post.title }}</h3>
+              <p>{{ post.description }}</p>
+              <span>{{ post.date_public }}</span>
+              </div>
+          {% endfor %}
+        {% else %}
+          <h2>Задач нету</h2>
+        {% endif %}
         </div>
     </div>
   </div>

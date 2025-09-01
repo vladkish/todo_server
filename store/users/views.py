@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import auth
 from .forms import Login, Sign
+from todo.models import Task
 
 def login(request):
     
@@ -42,7 +43,12 @@ def sign(request):
 
 @login_required
 def profile(request):
-    return render(request, 'users/profile.html')
+
+    context = {
+        'posts' : Task.objects.filter(user=request.user)
+    }
+
+    return render(request, 'users/profile.html', context)
 
 @login_required
 def logout(request):
