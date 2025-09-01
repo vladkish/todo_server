@@ -7,7 +7,10 @@ class Login(AuthenticationForm):
 
 class Sign(UserCreationForm):
 
+    username = forms.CharField(widget=forms.TextInput())
     email = forms.EmailField(required=True)
+    password1 = forms.CharField(widget=forms.PasswordInput())
+    password2 = forms.CharField(widget=forms.PasswordInput())
     
     class Meta:
         model = User

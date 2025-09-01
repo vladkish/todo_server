@@ -8,15 +8,13 @@
 
         <div class="auth-form">
           <h2>Войти в аккаунт</h2>
-          <form action="#" method="post">
-            <label>Имя пользователя</label>
-            <input type="text" name="username" required>
+          <form action="{% url "users:login" %}" method="post">
+            {% csrf_token %}
+            <label for="{{ form.username.id_for_label }}">Имя пользователя</label>
+            {{ form.username }}
             
-            <label>Email</label>
-            <input type="email" name="email" required>
-            
-            <label>Пароль</label>
-            <input type="password" name="password" required>
+            <label for="{{ form.password.id_for_label }}">Пароль</label>
+            {{ form.password }}
             
             <button type="submit">Войти</button>
           </form>

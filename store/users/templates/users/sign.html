@@ -9,7 +9,7 @@
         <!-- Sign Up -->
         <div class="auth-form">
           <h2>Создать аккаунт</h2>
-          <form action="#" method="post">
+          <form action="{% url "users:sign" %}" method="post">
             {% csrf_token %}
             <label for="{{ form.username.id_for_label }}">Имя пользователя</label>
             {{ form.username }}

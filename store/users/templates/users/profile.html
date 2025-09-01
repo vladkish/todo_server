@@ -11,7 +11,7 @@
           {% if user.image %}{{ user.image.url }}{% else %}{% static "img/default.jpg" %}{% endif %}" alt="Avatar">
         </div>
         <div class="profile-info">
-          <h2>Влад Кишковар</h2>
+          <h2>{{ user.username }}</h2>
           <p><strong>Email:</strong>{{ user.email }}</p>
           {% if user.is_staff or user.is_superuser%}
             <p><strong>Роль:</strong> Админ</p>
@@ -24,7 +24,7 @@
 
       <div class="profile-actions">
         <button class="btn">Редактировать профиль</button>
-        <a class="btn logout">Выйти</a>
+        <a class="btn logout" href="{% url "users:logout" %}">Выйти</a>
       </div>
     </div>
     <div class="public-tasks">

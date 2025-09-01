@@ -23,13 +23,13 @@ def login(request):
     
     return render(request, 'users/login.html', context)
 
-def sign(requests):
+def sign(request):
     
-    if requests.method == 'POST':
-        form = Sign(data=requests.POST)
+    if request.method == 'POST':
+        form = Sign(data=request.POST)
         if form.is_valid():
             user = form.save()
-            auth.login(requests, user)
+            auth.login(request, user)
             return redirect('index')
     else:
         form = Sign()
@@ -38,8 +38,13 @@ def sign(requests):
         'form' : form
     }
     
-    return render(requests, 'users/sign.html', context)
+    return render(request, 'users/sign.html', context)
 
 @login_required
 def profile(request):
     return render(request, 'users/profile.html')
+
+@login_required
+def logout(request):
+    auth.logout(request)
+    return redirect('index')
